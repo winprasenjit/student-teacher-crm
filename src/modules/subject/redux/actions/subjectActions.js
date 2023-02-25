@@ -1,0 +1,7 @@
+const subjectActions = {
+  LOAD_ALL_SUBJECTS: 'LOAD_ALL_SUBJECTS',
+  GET_ALL_SUBJECTS: 'GET_ALL_SUBJECTS',
+  GET_LOAD_SUBJECTS_ERROR: 'GET_LOAD_SUBJECTS_ERROR',
+};
+
+export default subjectActions;
