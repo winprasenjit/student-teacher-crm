@@ -8,8 +8,8 @@ import processRequestStatus from '../../../_shared/helpers/util';
 export function* fetchAllSubjects(action) {
   processRequestStatus(true);
   try {
-    let users = yield call(httpService.get, { url: apiEndPoint.subjects });
-    yield put(actionCreator(actions.GET_ALL_SUBJECTS, users));
+    let subjects = yield call(httpService.get, { url: apiEndPoint.SUBJECTS });
+    yield put(actionCreator(actions.GET_ALL_SUBJECTS, subjects));
     processRequestStatus(false);
   } catch (error) {
     yield put({
@@ -19,8 +19,23 @@ export function* fetchAllSubjects(action) {
   }
 }
 
+export function* addSubject(action) {
+  processRequestStatus(true);
+  try {
+    let subject = yield call(httpService.post, { url: apiEndPoint.SUBJECTS, data: action.data });
+    yield put(actionCreator(actions.LOAD_ALL_SUBJECTS));
+    processRequestStatus(false);
+  } catch (error) {
+    yield put({
+      type: actions.ADD_SUBJECT_ERROR,
+    });
+    processRequestStatus(false);
+  }
+}
+
 function* subjectWatcher() {
   yield takeEvery(actions.LOAD_ALL_SUBJECTS, fetchAllSubjects);
+  yield takeEvery(actions.ADD_SUBJECT, addSubject);
 }
 
 export default subjectWatcher;

@@ -8,12 +8,12 @@ export default function Footer() {
                     <div className='col-md-6 order-last order-md-first'>
                         <div className='copyright text-center text-md-start'>
                             <p className='text-sm'>
-                                Designed and Developed by
+                                Designed and Developed by 
                                 <a
-                                    href='https://plainadmin.com'
+                                    href='#'
                                     rel='nofollow'
                                 >
-                                    PlainAdmin
+                                    &nbsp;Independent
                                 </a>
                             </p>
                         </div>

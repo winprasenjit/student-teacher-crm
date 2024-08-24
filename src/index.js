@@ -7,7 +7,13 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import 'bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/fullcalendar.css';
+import './css/lineicons.css';
+import './css/loading-bar.min.css';
+import './css/morris.css';
+import './css/main.css';
+import './App.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

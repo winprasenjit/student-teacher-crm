@@ -1,7 +1,7 @@
 
 const apiEndPoint = {
     AUTHENTICATE: '/users/authenticate',
-    subjects: '/subjects',
+    SUBJECTS: '/subjects',
 };
 
 export default apiEndPoint;

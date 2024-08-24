@@ -3,7 +3,7 @@ import axios from './axios';
 const httpService = {
   get: ({ url, data }) => {
     return axios.get(url, data, {
-      credentials: "include",
+      credentials: true,
     });
   },
   post: ({ url, data }) => {

@@ -5,11 +5,17 @@ import BootstrapModal from '../_shared/components/BootstrapModal';
 import AddSubject from './AddSubject';
 import actionCreator from '../_shared/helpers/actionCreator';
 import action from './redux/actions/subjectActions';
-import BootstrapTable from '../_shared/components/BootstrapTable';
+import ReactTable from '../_shared/components/data-table/ReactTable';
+import columns from '../_shared/json/subjectColums.json';
 
 const fetchData = (dispatch) => {
   dispatch(actionCreator(action.LOAD_ALL_SUBJECTS));
 };
+
+const toggleModal = (setConfig, open) => {
+  setConfig({ open });
+};
+
 
 export default function Subjects() {
   const dispatch = useDispatch();
@@ -21,9 +27,7 @@ export default function Subjects() {
     fetchData(dispatch);
   }, []);
 
-  const openModal = () => {
-    setConfig({ open: true });
-  };
+  useEffect(() => toggleModal(setConfig, false), [subjects]);
 
   return (
     <>
@@ -34,7 +38,7 @@ export default function Subjects() {
       <button
         type='button'
         className='btn btn-primary mb-4'
-        onClick={openModal}
+        onClick={() => toggleModal(setConfig, true)}
       >
         Add
       </button>
@@ -42,7 +46,8 @@ export default function Subjects() {
         <div className='row'>
           <div className='col-12'>
             <div className='card-style mb-30'>
-              <BootstrapTable listData={subjects} />
+              {/* <BootstrapTable listData={subjects} /> */}
+              <ReactTable columns={columns} rows={subjects} />
             </div>
           </div>
         </div>

@@ -1,8 +1,29 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect, useState } from 'react'
+
+const MAX_CHAR_LENGTH = 2;
+
+const searchItem = (value, field, rows, setRows) => {
+  if (value && value.length > MAX_CHAR_LENGTH){
+    const filteredArr = rows.filter(obj => obj[field].toLowerCase().indexOf(value) >= 0);
+    setRows(filteredArr);
+  } else {
+    setRows(rows);
+  }
+};
 
 const BootstrapTable = ({ listData }) => {
   const columns = [{ label: 'Name', dataField: 'name' }, { label: 'Description', dataField: 'description' }];
-  // console.log(listData);
+  const [rows, setRows] = useState(listData);
+
+  useEffect(() => {
+    setRows(listData)
+
+    return () => {
+      setRows([])
+    }
+  }, [listData]);
+
+
   return (
     <div className='table-responsive'>
       <table className='table top-selling-table'>
@@ -20,10 +41,10 @@ const BootstrapTable = ({ listData }) => {
         </thead>
         <tbody className="input-style-1">
           <tr>{columns.map((item, index) => (<td style={{ paddingLeft: 0 }} key={item.label}>
-            <input type="text" className='grid-inline-search' placeholder={'Search ' + item.label} />
+            <input type="text" className='grid-inline-search' placeholder={'Search ' + item.label} onKeyUp={(e) => searchItem(e.target.value, item.dataField, listData, setRows)} />
           </td>
           ))}</tr>
-          {listData && listData.map((row, rowIndex) => (<tr key={rowIndex}>
+          {rows && rows.map((row, rowIndex) => (<tr key={rowIndex}>
             {columns.map((col, colIndex) => (
               <td key={colIndex}>
                 <p>{row[col.dataField]}</p>
@@ -34,7 +55,7 @@ const BootstrapTable = ({ listData }) => {
         </tbody>
       </table>
     </div>
-  )
+  );
 };
 
 export default memo(BootstrapTable);

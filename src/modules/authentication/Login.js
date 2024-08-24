@@ -51,7 +51,7 @@ export default function Login() {
               <h3>
                 Login to <strong>Student-Master</strong>
               </h3>
-              <p className="mb-4"> Loreal Ipsum </p>
+              <p className="mb-4"> All in one solution </p>
               <Formik
                 initialValues={{
                   username: "",

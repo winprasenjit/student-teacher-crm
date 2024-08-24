@@ -11,14 +11,18 @@ export default function BootstrapModal({ config, children }) {
     myModal.current = new Modal(document.getElementById('myModal'), {
       keyboard: false,
     });
-
-    if (config && config.open) {
-      myModal.current.show();
-    }
-
     return () => {
       myModal.current.dispose();
     };
+  }, []);
+
+  useEffect(() => {
+    if (config && config.open) {
+      myModal.current.show();
+    }
+    if (config && !config.open) {
+      myModal.current && myModal.current.hide();
+    }
   }, [config]);
 
   return (

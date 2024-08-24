@@ -1,0 +1,4 @@
+[
+  { "label": "Name", "dataField": "name" },
+  { "label": "Description", "dataField": "description" }
+]

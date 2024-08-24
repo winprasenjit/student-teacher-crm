@@ -1,14 +1,19 @@
 import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import InputText from '../_shared/components/InputText';
+import subjectActions from './redux/actions/subjectActions';
+import actionCreator from '../_shared/helpers/actionCreator';
+import InputTextArea from '../_shared/components/InputTextArea';
 
-export default function AddSubject() {
+export default function AddSubject({closeModal}) {
+  const dispatch = useDispatch();
 
   const [hasError, setError] = useState(false);
 
   const save = (subject) => {
-    console.log(subject);
+    dispatch(actionCreator(subjectActions.ADD_SUBJECT, subject));
   };
 
   const handleOnChange = (event) => {
@@ -18,9 +23,8 @@ export default function AddSubject() {
   return (
     <Formik
       initialValues={{
-        username: "",
-        password: "",
-        acceptedTerms: false, // added for our checkbox
+        name: "",
+        description: "",
       }}
       validationSchema={Yup.object({
         name: Yup.string()
@@ -55,7 +59,7 @@ export default function AddSubject() {
             </div>
             <div className="input-style-1">
               <label>Description</label>
-              <textarea placeholder="Message" rows="5" name="description"></textarea>
+              <InputTextArea placeholder="Message" rows="5" name="description"></InputTextArea>
             </div>
           </div>
           <div className="modal-footer">
@@ -66,9 +70,11 @@ export default function AddSubject() {
             >
               Close
             </button>
-            <button type="button" className="btn btn-primary">
-              Save
-            </button>
+            <input
+              type="submit"
+              value="Save"
+              className="btn btn-block btn-primary"
+            />
           </div>
         </div>
       </Form>

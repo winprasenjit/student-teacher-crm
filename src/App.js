@@ -9,14 +9,6 @@ import GuradedRoute from './modules/_shared/guards/GuradedRoute';
 import Header from './modules/_shared/components/Header';
 import Subjects from './modules/subject/Subjects';
 import Loader from './modules/_shared/components/Loader';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import './css/fullcalendar.css';
-import './css/lineicons.css';
-import './css/loading-bar.min.css';
-import './css/morris.css';
-import './css/main.css';
-import './App.css';
 import Signout from './modules/authentication/Signout';
 
 function App() {
