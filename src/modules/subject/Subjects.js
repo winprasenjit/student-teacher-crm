@@ -16,12 +16,11 @@ const toggleModal = (setConfig, open) => {
   setConfig({ open });
 };
 
-
 export default function Subjects() {
   const dispatch = useDispatch();
   const [config, setConfig] = useState();
 
-  const { subjects } = useSelector(state => state.subjectReducer);
+  const { subjects } = useSelector((state) => state.subjectReducer);
 
   useEffect(() => {
     fetchData(dispatch);
@@ -29,25 +28,31 @@ export default function Subjects() {
 
   useEffect(() => toggleModal(setConfig, false), [subjects]);
 
+  const onEdit = (selectedItem) => console.log(selectedItem);
+
   return (
     <>
       <BootstrapModal config={config}>
         <AddSubject />
       </BootstrapModal>
-      <TitleWrapper title='Subjects' />
+      <TitleWrapper title="Subjects" />
       <button
-        type='button'
-        className='btn btn-primary mb-4'
+        type="button"
+        className="btn btn-primary mb-4"
         onClick={() => toggleModal(setConfig, true)}
       >
         Add
       </button>
-      <div className='tables-wrapper'>
-        <div className='row'>
-          <div className='col-12'>
-            <div className='card-style mb-30'>
+      <div className="tables-wrapper">
+        <div className="row">
+          <div className="col-12">
+            <div className="card-style mb-30">
               {/* <BootstrapTable listData={subjects} /> */}
-              <ReactTable columns={columns} rows={subjects} />
+              <ReactTable
+                columns={columns}
+                rows={subjects}
+                actionColumn={{ edit: onEdit }}
+              />
             </div>
           </div>
         </div>
