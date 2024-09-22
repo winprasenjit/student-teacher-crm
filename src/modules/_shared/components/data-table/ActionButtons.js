@@ -10,8 +10,6 @@ export function ActionButtons({
   pageIndex,
   pageSize,
   previousPage,
-  refreshData,
-  rerender,
   rowSelection,
   setPageIndex,
   setPageSize,

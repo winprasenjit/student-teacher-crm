@@ -1,4 +1,4 @@
 [
-  { "label": "Name", "dataField": "name" },
-  { "label": "Description", "dataField": "description" }
+  { "label": "Name", "dataField": "name", "size": 500 },
+  { "label": "Description", "dataField": "description" , "size": 500}
 ]
