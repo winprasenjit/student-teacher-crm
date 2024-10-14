@@ -1,83 +1,25 @@
-import React, { useState } from "react";
+import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
-import InputText from '../_shared/components/InputText';
 import subjectActions from './redux/actions/subjectActions';
 import actionCreator from '../_shared/helpers/actionCreator';
-import InputTextArea from '../_shared/components/InputTextArea';
+import SubjectForm from './SubjectForm';
 
-export default function AddSubject({closeModal}) {
+export default function AddSubject({ closeModal }) {
   const dispatch = useDispatch();
-
-  const [hasError, setError] = useState(false);
+  const initialValues = {
+    name: '',
+    description: '',
+  };
 
   const save = (subject) => {
     dispatch(actionCreator(subjectActions.ADD_SUBJECT, subject));
   };
 
-  const handleOnChange = (event) => {
-    setError(false);
-  };
-
   return (
-    <Formik
-      initialValues={{
-        name: "",
-        description: "",
-      }}
-      validationSchema={Yup.object({
-        name: Yup.string()
-          .max(15, "Must be 15 characters or less")
-          .required("Required"),
-        description: Yup.string()
-          .max(200, "Must be 200 characters or less"),
-      })}
-      onSubmit={(subject, { setSubmitting }) => {
-        save(subject);
-      }}
-    >
-      <Form onChange={handleOnChange}>
-        <div className="add-subject">
-          <div className="modal-header">
-            <h5 className="modal-title">Add Subject</h5>
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div className="modal-body">
-            <div className="input-style-1">
-              <InputText
-                label="Name"
-                name="name"
-                type="text"
-                placeholder=""
-              />
-            </div>
-            <div className="input-style-1">
-              <label>Description</label>
-              <InputTextArea placeholder="Message" rows="5" name="description"></InputTextArea>
-            </div>
-          </div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <input
-              type="submit"
-              value="Save"
-              className="btn btn-block btn-primary"
-            />
-          </div>
-        </div>
-      </Form>
-    </Formik >
+    <SubjectForm
+      initialValues={initialValues}
+      onSave={save}
+      onClose={closeModal}
+    />
   );
 }

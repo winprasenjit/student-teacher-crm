@@ -11,8 +11,17 @@ const httpService = {
       credentials: "include",
     });
   },
+  put: ({ url, data }) => {
+    return axios.put(url, data, {
+      credentials: "include",
+    });
+  },
   put: axios.put,
-  delete: axios.delete,
+  delete: ({ url, data }) => {
+    return axios.delete(url, data, {
+      credentials: "include",
+    });
+  },
 };
 
 export default httpService; 

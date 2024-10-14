@@ -100,8 +100,10 @@ export default function ReactTable({
         pin: 'right',
         cell: (info) => {
           return (
-            <div onClick={() => onActionItemClick(info, actionColumn.edit)}>
-              <i className="lni lni-alarm"></i>
+            <div className="actionColumn">
+              <i onClick={() => onActionItemClick(info, actionColumn.edit)} className="lni lni-pencil"></i>
+              &nbsp;
+              <i onClick={() => onActionItemClick(info, actionColumn.delete)} className="lni lni-trash-can"></i>
             </div>
           );
         },
@@ -164,7 +166,7 @@ export default function ReactTable({
             />
           </div>
         </div>
-        <BTable hover responsive size="sm" className="input-style-1">
+        <BTable hover responsive size="sm" className="input-style-1 tenstack-table">
           <thead>
             {headerGroups.map((headerGroup) => (
               <tr key={headerGroup.id}>
@@ -176,7 +178,7 @@ export default function ReactTable({
                   }
                   return (
                     <th
-                      className="relative"
+                      className={column.id === 'actionColumn' ? "relative actionColumn" : "relative"}
                       key={header.id}
                       style={{
                         width: header.getSize(),

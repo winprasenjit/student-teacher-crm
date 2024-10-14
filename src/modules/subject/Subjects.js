@@ -7,6 +7,8 @@ import actionCreator from '../_shared/helpers/actionCreator';
 import action from './redux/actions/subjectActions';
 import ReactTable from '../_shared/components/data-table/ReactTable';
 import columns from '../_shared/json/subjectColums.json';
+import subjectActions from './redux/actions/subjectActions';
+import EditSubject from './EditSubject';
 
 const fetchData = (dispatch) => {
   dispatch(actionCreator(action.LOAD_ALL_SUBJECTS));
@@ -19,6 +21,9 @@ const toggleModal = (setConfig, open) => {
 export default function Subjects() {
   const dispatch = useDispatch();
   const [config, setConfig] = useState();
+  const [editConfig, setEditConfig] = useState();
+  const [addKey, setAddKey] = useState(1);
+  const [editKey, setEditKey] = useState(1);
 
   const { subjects } = useSelector((state) => state.subjectReducer);
 
@@ -28,12 +33,25 @@ export default function Subjects() {
 
   useEffect(() => toggleModal(setConfig, false), [subjects]);
 
-  const onEdit = (selectedItem) => console.log(selectedItem);
+  const onCloseModal = (fn) => {
+    fn((key) => key + 1);
+  };
+
+  const onEdit = (selectedItem) => {
+    dispatch(actionCreator(subjectActions.GET_SUBJECT, selectedItem));
+    toggleModal(setEditConfig, true);
+  };
+
+  const onDelete = (subject) =>
+    dispatch(actionCreator(subjectActions.DELETE_SUBJECT, subject));
 
   return (
     <>
-      <BootstrapModal config={config}>
-        <AddSubject />
+      <BootstrapModal config={config} type="add">
+        <AddSubject closeModal={()=>onCloseModal(setAddKey)} key={addKey} />
+      </BootstrapModal>
+      <BootstrapModal config={editConfig} type="edit">
+        <EditSubject closeModal={()=>onCloseModal(setEditKey)} key={editKey} />
       </BootstrapModal>
       <TitleWrapper title="Subjects" />
       <button
@@ -51,7 +69,7 @@ export default function Subjects() {
               <ReactTable
                 columns={columns}
                 rows={subjects}
-                actionColumn={{ edit: onEdit }}
+                actionColumn={{ edit: onEdit, delete: onDelete }}
               />
             </div>
           </div>
