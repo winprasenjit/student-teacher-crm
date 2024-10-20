@@ -14,8 +14,6 @@ export default function SubjectForm({ initialValues, onSave, onClose }) {
     setError(false);
   };
 
-  console.log(initialValues);
-
   return (
     <Formik
       initialValues={initialValues}

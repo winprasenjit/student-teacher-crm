@@ -19,23 +19,6 @@ export function* fetchAllSubjects(action) {
   }
 }
 
-export function* addSubject(action) {
-  processRequestStatus(true);
-  try {
-    let subject = yield call(httpService.post, {
-      url: apiEndPoint.SUBJECTS,
-      data: action.data,
-    });
-    yield put(actionCreator(actions.LOAD_ALL_SUBJECTS));
-    processRequestStatus(false);
-  } catch (error) {
-    yield put({
-      type: actions.ADD_SUBJECT_ERROR,
-    });
-    processRequestStatus(false);
-  }
-}
-
 export function* getSubject(action) {
   processRequestStatus(true);
   try {
@@ -52,10 +35,44 @@ export function* getSubject(action) {
   }
 }
 
+export function* addSubject(action) {
+  processRequestStatus(true);
+  try {
+    yield call(httpService.post, {
+      url: apiEndPoint.SUBJECTS,
+      data: action.data,
+    });
+    yield put(actionCreator(actions.LOAD_ALL_SUBJECTS));
+    processRequestStatus(false);
+  } catch (error) {
+    yield put({
+      type: actions.ADD_SUBJECT_ERROR,
+    });
+    processRequestStatus(false);
+  }
+}
+
+export function* editSubject(action) {
+  processRequestStatus(true);
+  try {
+    yield call(httpService.put, {
+      url: apiEndPoint.SUBJECTS,
+      data: action.data,
+    });
+    yield put(actionCreator(actions.LOAD_ALL_SUBJECTS));
+    processRequestStatus(false);
+  } catch (error) {
+    yield put({
+      type: actions.EDIT_SUBJECT_ERROR,
+    });
+    processRequestStatus(false);
+  }
+}
+
 export function* deleteSubject(action) {
   processRequestStatus(true);
   try {
-    let subject = yield call(httpService.delete, {
+    yield call(httpService.delete, {
       url: apiEndPoint.SUBJECTS + '/' + action.data._id,
     });
     yield put(actionCreator(actions.LOAD_ALL_SUBJECTS));
@@ -70,8 +87,9 @@ export function* deleteSubject(action) {
 
 function* subjectWatcher() {
   yield takeEvery(actions.LOAD_ALL_SUBJECTS, fetchAllSubjects);
-  yield takeEvery(actions.ADD_SUBJECT, addSubject);
   yield takeEvery(actions.GET_SUBJECT, getSubject);
+  yield takeEvery(actions.ADD_SUBJECT, addSubject);
+  yield takeEvery(actions.EDIT_SUBJECT, editSubject);
   yield takeEvery(actions.DELETE_SUBJECT, deleteSubject);
 }
 

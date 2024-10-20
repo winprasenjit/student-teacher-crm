@@ -16,7 +16,6 @@ const httpService = {
       credentials: "include",
     });
   },
-  put: axios.put,
   delete: ({ url, data }) => {
     return axios.delete(url, data, {
       credentials: "include",

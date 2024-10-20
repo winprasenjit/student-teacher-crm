@@ -31,7 +31,10 @@ export default function Subjects() {
     fetchData(dispatch);
   }, []);
 
-  useEffect(() => toggleModal(setConfig, false), [subjects]);
+  useEffect(() => {
+    toggleModal(setConfig, false);
+    toggleModal(setEditConfig, false);
+  }, [subjects]);
 
   const onCloseModal = (fn) => {
     fn((key) => key + 1);
@@ -48,10 +51,13 @@ export default function Subjects() {
   return (
     <>
       <BootstrapModal config={config} type="add">
-        <AddSubject closeModal={()=>onCloseModal(setAddKey)} key={addKey} />
+        <AddSubject closeModal={() => onCloseModal(setAddKey)} key={addKey} />
       </BootstrapModal>
       <BootstrapModal config={editConfig} type="edit">
-        <EditSubject closeModal={()=>onCloseModal(setEditKey)} key={editKey} />
+        <EditSubject
+          closeModal={() => onCloseModal(setEditKey)}
+          key={editKey}
+        />
       </BootstrapModal>
       <TitleWrapper title="Subjects" />
       <button

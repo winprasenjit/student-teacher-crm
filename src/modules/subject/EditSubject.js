@@ -16,9 +16,8 @@ export default function EditSubject({ closeModal }) {
     }
   }, [subject]);
 
-  const save = (subject) => {
-    console.log('edit', subject);
-  };
+  const save = (subject) =>
+    dispatch(actionCreator(action.EDIT_SUBJECT, subject));
 
   const closeEditModal = () => {
     dispatch(actionCreator(action.RESET_SUBJECT));
