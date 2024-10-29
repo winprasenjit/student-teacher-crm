@@ -10,6 +10,7 @@ import Header from './modules/_shared/components/Header';
 import Subjects from './modules/subject/Subjects';
 import Loader from './modules/_shared/components/Loader';
 import Signout from './modules/authentication/Signout';
+import Teachers from './modules/teacher/Teachers';
 
 function App() {
   const { loader } = useSelector((state) => state.applicationStateReducer);
@@ -25,6 +26,10 @@ function App() {
           <Route path='/' element={gurdedRoute(<Header />)}>
             <Route index element={<Home />} />
             <Route path='/subjects' element={<Subjects />} />
+          </Route>
+          <Route path='/' element={gurdedRoute(<Header />)}>
+            <Route index element={<Home />} />
+            <Route path='/teachers' element={<Teachers />} />
           </Route>
           <Route path='/registration' element={<Registration />} />
           <Route path='/login' element={<Login />} />
