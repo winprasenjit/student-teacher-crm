@@ -35,18 +35,18 @@ export function* getSubject(action) {
   }
 }
 
-export function* addSubject(action) {
+export function* addTeacher(action) {
   processRequestStatus(true);
   try {
     yield call(httpService.post, {
-      url: apiEndPoint.SUBJECTS,
+      url: apiEndPoint.TEACHERS,
       data: action.data,
     });
-    yield put(actionCreator(actions.LOAD_ALL_SUBJECTS));
+    yield put(actionCreator(actions.LOAD_ALL_TEACHERS));
     processRequestStatus(false);
   } catch (error) {
     yield put({
-      type: actions.ADD_SUBJECT_ERROR,
+      type: actions.ADD_TEACHER_ERROR,
     });
     processRequestStatus(false);
   }
@@ -87,10 +87,10 @@ export function* deleteSubject(action) {
 
 function* teacherWatcher() {
   yield takeEvery(actions.LOAD_ALL_TEACHERS, fetchAllTeachers);
-  yield takeEvery(actions.GET_SUBJECT, getSubject);
-  yield takeEvery(actions.ADD_SUBJECT, addSubject);
-  yield takeEvery(actions.EDIT_SUBJECT, editSubject);
-  yield takeEvery(actions.DELETE_SUBJECT, deleteSubject);
+  // yield takeEvery(actions.GET_SUBJECT, getSubject);
+  yield takeEvery(actions.ADD_TEACHER, addTeacher);
+  // yield takeEvery(actions.EDIT_SUBJECT, editSubject);
+  // yield takeEvery(actions.DELETE_SUBJECT, deleteSubject);
 }
 
 export default teacherWatcher;

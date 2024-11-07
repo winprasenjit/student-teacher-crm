@@ -11,9 +11,8 @@ export default function AddSubject({ closeModal }) {
     description: '',
   };
 
-  const save = (subject) => {
+  const save = (subject) =>
     dispatch(actionCreator(subjectActions.ADD_SUBJECT, subject));
-  };
 
   return (
     <SubjectForm

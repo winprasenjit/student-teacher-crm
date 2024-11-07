@@ -14,7 +14,8 @@ const fetchData = (dispatch) => {
   dispatch(actionCreator(action.LOAD_ALL_SUBJECTS));
 };
 
-const toggleModal = (setConfig, open) => {
+const toggleModal = (fn, setConfig, open) => {
+  fn((key) => key + 1);
   setConfig({ open });
 };
 
@@ -32,8 +33,8 @@ export default function Subjects() {
   }, []);
 
   useEffect(() => {
-    toggleModal(setConfig, false);
-    toggleModal(setEditConfig, false);
+    toggleModal(setAddKey, setConfig, false);
+    toggleModal(setEditKey, setEditConfig, false);
   }, [subjects]);
 
   const onCloseModal = (fn) => {
@@ -42,7 +43,7 @@ export default function Subjects() {
 
   const onEdit = (selectedItem) => {
     dispatch(actionCreator(subjectActions.GET_SUBJECT, selectedItem));
-    toggleModal(setEditConfig, true);
+    toggleModal(setEditKey, setEditConfig, true);
   };
 
   const onDelete = (subject) =>
@@ -63,7 +64,7 @@ export default function Subjects() {
       <button
         type="button"
         className="btn btn-primary mb-4"
-        onClick={() => toggleModal(setConfig, true)}
+        onClick={() => toggleModal(setEditKey, setConfig, true)}
       >
         Add
       </button>

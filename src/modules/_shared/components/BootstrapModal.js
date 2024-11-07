@@ -33,7 +33,7 @@ export default function BootstrapModal({ config, children, type }) {
         aria-labelledby="exampleModalToggleLabel"
         tabIndex="-1"
       >
-        <div className="modal-dialog modal-dialog-centered">
+        <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div className="modal-content">{children}</div>
         </div>
       </div>

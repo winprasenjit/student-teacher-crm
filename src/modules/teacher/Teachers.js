@@ -6,12 +6,14 @@ import actionCreator from '../_shared/helpers/actionCreator';
 import action from './redux/actions/teacherActions';
 import ReactTable from '../_shared/components/data-table/ReactTable';
 import columns from '../_shared/json/teacherColums.json';
+import AddTeacher from './AddTeacher';
 
 const fetchData = (dispatch) => {
   dispatch(actionCreator(action.LOAD_ALL_TEACHERS));
 };
 
-const toggleModal = (setConfig, open) => {
+const toggleModal = (fn, setConfig, open) => {
+  fn((key) => key + 1);
   setConfig({ open });
 };
 
@@ -29,8 +31,8 @@ export default function Teachers() {
   }, []);
 
   useEffect(() => {
-    toggleModal(setConfig, false);
-    toggleModal(setEditConfig, false);
+    toggleModal(setAddKey, setConfig, false);
+    toggleModal(setEditKey, setEditConfig, false);
   }, [teachers]);
 
   const onCloseModal = (fn) => {
@@ -39,7 +41,7 @@ export default function Teachers() {
 
   const onEdit = (selectedItem) => {
     // dispatch(actionCreator(subjectActions.GET_SUBJECT, selectedItem));
-    toggleModal(setEditConfig, true);
+    toggleModal(setEditKey, setEditConfig, true);
   };
 
   /* const onDelete = (subject) =>
@@ -49,10 +51,10 @@ export default function Teachers() {
 
   return (
     <>
-      {/* <BootstrapModal config={config} type="add">
-        <AddSubject closeModal={() => onCloseModal(setAddKey)} key={addKey} />
+      <BootstrapModal config={config} type="add">
+        <AddTeacher closeModal={() => onCloseModal(setAddKey)} key={addKey} />
       </BootstrapModal>
-      <BootstrapModal config={editConfig} type="edit">
+      {/* <BootstrapModal config={editConfig} type="edit">
         <EditSubject
           closeModal={() => onCloseModal(setEditKey)}
           key={editKey}
@@ -62,7 +64,7 @@ export default function Teachers() {
       <button
         type="button"
         className="btn btn-primary mb-4"
-        onClick={() => toggleModal(setConfig, true)}
+        onClick={() => toggleModal(setAddKey, setConfig, true)}
       >
         Add
       </button>
