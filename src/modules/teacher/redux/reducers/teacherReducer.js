@@ -1,11 +1,11 @@
 import actions from '../actions/teacherActions';
 
-const initalState = {
+const initialState = {
   teachers: [],
   teacher: null,
   errorMessage: null,
 };
-export default function teacherReducer(state = initalState, action) {
+export default function teacherReducer(state = initialState, action) {
   switch (action.type) {
     case actions.GET_ALL_TEACHERS:
       return {
@@ -13,12 +13,12 @@ export default function teacherReducer(state = initalState, action) {
         teachers: action.data,
       };
 
-    case actions.LOAD_SUBJECT:
+    case actions.LOAD_TEACHER:
       return {
         ...state,
         teacher: action.data,
       };
-    case actions.RESET_SUBJECT:
+    case actions.RESET_TEACHER:
       return {
         ...state,
         teacher: null,

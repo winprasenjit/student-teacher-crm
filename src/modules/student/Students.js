@@ -3,27 +3,27 @@ import {useDispatch, useSelector} from 'react-redux';
 import TitleWrapper from '../_shared/components/TitleWrapper';
 import BootstrapModal from '../_shared/components/BootstrapModal';
 import actionCreator from '../_shared/helpers/actionCreator';
-import action from './redux/actions/teacherActions';
+import action from './redux/actions/studentActions';
 import ReactTable from '../_shared/components/data-table/ReactTable';
-import columns from '../_shared/json/teacherColums.json';
-import AddTeacher from './AddTeacher';
-import EditTeacher from "./EditTeacher";
+import columns from '../_shared/json/studentColums.json';
+import AddStudent from "./AddStudent";
+import EditStudent from "./EditStudent";
 
-const fetchData = (dispatch) => dispatch(actionCreator(action.LOAD_ALL_TEACHERS));
+const fetchData = (dispatch) => dispatch(actionCreator(action.LOAD_ALL_STUDENTS));
 
 const toggleModal = (fn, setConfig, open) => {
   fn((key) => key + 1);
   setConfig({open});
 };
 
-export default function Teachers() {
+export default function Students() {
   const dispatch = useDispatch();
   const [config, setConfig] = useState();
   const [editConfig, setEditConfig] = useState();
   const [addKey, setAddKey] = useState(1);
   const [editKey, setEditKey] = useState(1);
 
-  const {teachers} = useSelector((state) => state.teacherReducer);
+  const {students} = useSelector((state) => state.studentReducer);
 
   useEffect(() => {
     fetchData(dispatch);
@@ -32,32 +32,32 @@ export default function Teachers() {
   useEffect(() => {
     toggleModal(setAddKey, setConfig, false);
     toggleModal(setEditKey, setEditConfig, false);
-  }, [teachers]);
+  }, [students]);
 
   const onCloseModal = (fn) => {
     fn((key) => key + 1);
   };
 
   const onEdit = (selectedItem) => {
-    dispatch(actionCreator(action.GET_TEACHER, selectedItem));
+    dispatch(actionCreator(action.GET_STUDENT, selectedItem));
     toggleModal(setEditKey, setEditConfig, true);
   };
 
-  const onDelete = (teacher) =>
-    dispatch(actionCreator(action.DELETE_TEACHER, teacher));
+  const onDelete = (student) =>
+    dispatch(actionCreator(action.DELETE_STUDENT, student));
 
   return (
     <>
       <BootstrapModal config={config} type="add">
-        <AddTeacher closeModal={() => onCloseModal(setAddKey)} key={addKey}/>
+        <AddStudent closeModal={() => onCloseModal(setAddKey)} key={addKey}/>
       </BootstrapModal>
       <BootstrapModal config={editConfig} type="edit">
-        <EditTeacher
+        <EditStudent
           closeModal={() => onCloseModal(setEditKey)}
           key={editKey}
         />
       </BootstrapModal>
-      <TitleWrapper title="Teachers"/>
+      <TitleWrapper title="Students"/>
       <button
         type="button"
         className="btn btn-primary mb-4"
@@ -71,7 +71,7 @@ export default function Teachers() {
             <div className="card-style mb-30">
               <ReactTable
                 columns={columns}
-                rows={teachers}
+                rows={students}
                 actionColumn={{edit: onEdit, delete: onDelete}}
               />
             </div>

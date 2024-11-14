@@ -1,9 +1,9 @@
 import applicationActions from '../actions/applicationAction';
 
-const initalState = {
+const initialState = {
   loader: false,
 }
-const applicationStateReducer = (state = initalState, action) => {
+const applicationStateReducer = (state = initialState, action) => {
   switch (action.type) {
     case applicationActions.SET_LOADER_STATUS:
       return {
