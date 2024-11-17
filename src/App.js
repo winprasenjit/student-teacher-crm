@@ -12,6 +12,8 @@ import Loader from './modules/_shared/components/Loader';
 import Signout from './modules/authentication/Signout';
 import Teachers from './modules/teacher/Teachers';
 import Students from "./modules/student/Students";
+import ClassRoom from "./modules/classroom/ClassRoom";
+import Batches from "./modules/batch/Batches";
 
 function App() {
   const { loader } = useSelector((state) => state.applicationStateReducer);
@@ -29,6 +31,8 @@ function App() {
             <Route path='/subjects' element={<Subjects />} />
             <Route path='/teachers' element={<Teachers />} />
             <Route path='/students' element={<Students />} />
+            <Route path='/batches' element={<Batches />} />
+            <Route path='/classroom' element={<ClassRoom />} />
           </Route>
           <Route path='/registration' element={<Registration />} />
           <Route path='/login' element={<Login />} />
