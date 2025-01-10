@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { Modal } from 'bootstrap';
-import { useState } from 'react';
 
 export default function BootstrapModal({ config, children, type }) {
   const myModal = useRef();

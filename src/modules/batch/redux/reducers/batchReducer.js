@@ -1,7 +1,7 @@
 import actions from '../actions/batchActions';
 
 const initalState = {
-  batches: null,
+  batches: [],
   batch: null,
   errorMessage: null,
 };

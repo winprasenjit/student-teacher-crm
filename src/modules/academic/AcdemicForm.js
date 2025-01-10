@@ -4,14 +4,8 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import InputText from '../_shared/components/InputText';
 import InputTextArea from '../_shared/components/InputTextArea';
-import actionCreator from "../_shared/helpers/actionCreator";
-import action from "../academic/redux/actions/academicActions";
 
-const fetchData = (dispatch) => {
-  dispatch(actionCreator(action.LOAD_ALL_ACADEMICS));
-};
-
-export default function SubjectForm({ initialValues, onSave, onClose }) {
+export default function AcademicForm({ initialValues, onSave, onClose }) {
   const dispatch = useDispatch();
 
   const [hasError, setError] = useState(false);
@@ -29,14 +23,14 @@ export default function SubjectForm({ initialValues, onSave, onClose }) {
           .required('Required'),
         description: Yup.string().max(200, 'Must be 200 characters or less'),
       })}
-      onSubmit={(subject, { setSubmitting }) => {
-        onSave(subject);
+      onSubmit={(academic, { setSubmitting }) => {
+        onSave(academic);
       }}
     >
       <Form onChange={handleOnChange}>
-        <div className="add-subject">
+        <div className="add-academic">
           <div className="modal-header">
-            <h5 className="modal-title">Add Subject</h5>
+            <h5 className="modal-title">Add Academic</h5>
             <button
               type="button"
               className="btn-close"
@@ -52,7 +46,7 @@ export default function SubjectForm({ initialValues, onSave, onClose }) {
             <div className="input-style-1">
               <label>Description</label>
               <InputTextArea
-                placeholder="Message"
+                placeholder="Description"
                 rows="5"
                 name="description"
               ></InputTextArea>

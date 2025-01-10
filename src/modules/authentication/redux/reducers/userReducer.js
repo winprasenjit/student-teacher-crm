@@ -1,7 +1,7 @@
 import actions from '../actions/loginAction';
 
 const initalState = {
-  user: null,
+  user: JSON.parse(sessionStorage.getItem('user')) || null, // Load from localStorage
   errorMessage: null
 }
 export default function userReducer(state = initalState, action) {

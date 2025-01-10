@@ -69,6 +69,12 @@ export default function SideBar() {
               </NavLink>
             </li>
             <li className='nav-item'>
+              <NavLink to='/academics'>
+                <img className="me-3" src='images/menu/academic-cap-svgrepo-com.svg' alt='logo' width="20" height="20"/>
+                <span className='text'>Academics </span>
+              </NavLink>
+            </li>
+            <li className='nav-item'>
               <NavLink to='/teachers'>
                 <img className="me-3" src='images/menu/teacher-male-giving-a-lesson-svgrepo-com.svg' alt='logo'
                      width="20" height="20"/>

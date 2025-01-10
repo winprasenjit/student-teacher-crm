@@ -14,6 +14,7 @@ import Teachers from './modules/teacher/Teachers';
 import Students from "./modules/student/Students";
 import ClassRoom from "./modules/classroom/ClassRoom";
 import Batches from "./modules/batch/Batches";
+import Academics from "./modules/academic/Academics";
 
 function App() {
   const { loader } = useSelector((state) => state.applicationStateReducer);
@@ -29,6 +30,7 @@ function App() {
           <Route path='/' element={gurdedRoute(<Header />)}>
             <Route index element={<Home />} />
             <Route path='/subjects' element={<Subjects />} />
+            <Route path='/academics' element={<Academics />} />
             <Route path='/teachers' element={<Teachers />} />
             <Route path='/students' element={<Students />} />
             <Route path='/batches' element={<Batches />} />
