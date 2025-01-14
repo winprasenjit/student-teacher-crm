@@ -8,7 +8,9 @@ export default function AddBatch({ closeModal }) {
   const dispatch = useDispatch();
   const initialValues = {
     name: '',
+    className: '',
     description: '',
+    students: '',
   };
 
   const save = (batch) =>
