@@ -40,6 +40,13 @@ export default function BatchForm({initialValues, onSave, onClose}) {
     setClassEducation(academicList);
   }, [academics]);
 
+  useEffect(() => {
+    const value = initialValues?.className;
+    if (value) {
+      dispatch(actionCreator(action.LOAD_ACADEMIC_USERS, {value}));
+    }
+  }, [initialValues.className]);
+
   const handleOnStudentSelect = (event, fieldName, setFieldValue) => {
     const value = event.target.value;
     if (event.target.checked) {
@@ -49,12 +56,16 @@ export default function BatchForm({initialValues, onSave, onClose}) {
     }
   };
 
+  const toggleChecked = (event) => {
+    console.log(event.target.checked);
+  }
+
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={Yup.object({
         name: Yup.string()
-          .max(15, 'Must be 15 characters or less')
+          .max(30, 'Must be 30 characters or less')
           .required('Required'),
         description: Yup.string().max(200, 'Must be 200 characters or less'),
       })}
@@ -85,40 +96,53 @@ export default function BatchForm({initialValues, onSave, onClose}) {
               </div>
               <div className="col-sm-6">
                 <label className="mb-2">Students</label>
-                <div class="base-list-box">
+                <div className="base-list-box">
                   <ul>
                     {academicUsers && academicUsers.length > 0 ? (
-                      academicUsers.map((user) => (
+                      <>
                         <li>
-                          <div class="form-check">
+                          <div className="form-check">
                             <input
+                              id="checkbox-select-all"
                               className="form-check-input"
-                              type="checkbox" 
-                              value={user._id} 
-                              id="checkbox-1" 
-                              name="students"
-                              checked={values.students?.includes(user._id)}
-                              onChange={(e) => {
-                                if (e.target.checked) {
-                                  // Add the option to the students array
-                                  setFieldValue('students', [
-                                    ...values.students,
-                                    user._id,
-                                  ]);
-                                } else {
-                                  // Remove the option from the students array
-                                  setFieldValue(
-                                    'students',
-                                    values.students.filter((item) => item !== user._id)
-                                  );
-                                }
-                              }}
+                              type="checkbox"
+                              value="true"
+                              onChange={toggleChecked}
                             />
-                            <label className="form-check-label" htmlFor="checkbox-1">{user.firstname + ' ' + user.lastname}</label>
+                            <label className="form-check-label" htmlFor="checkbox-select-all">Check All</label>
                           </div>
                         </li>
-                      ))
-                    ) : (
+                        {academicUsers.map((user) => (
+                          <li key={user._id}>
+                            <div className="form-check">
+                              <input
+                                className="form-check-input"
+                                type="checkbox"
+                                value={user._id}
+                                id="checkbox-1"
+                                name="students"
+                                checked={values.students?.includes(user._id)}
+                                onChange={(e) => {
+                                  if (e.target.checked) {
+                                    // Add the option to the students array
+                                    setFieldValue('students', [
+                                      ...values.students,
+                                      user._id,
+                                    ]);
+                                  } else {
+                                    // Remove the option from the students array
+                                    setFieldValue(
+                                      'students',
+                                      values.students.filter((item) => item !== user._id)
+                                    );
+                                  }
+                                }}
+                              />
+                              <label className="form-check-label" htmlFor="checkbox-1">{user.firstname + ' ' + user.lastname}</label>
+                            </div>
+                          </li>
+                        ))}
+                      </>) : (
                       <li className="p-1">No students found</li>
                     )}
                   </ul>

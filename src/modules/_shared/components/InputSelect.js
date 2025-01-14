@@ -4,9 +4,9 @@ import {useField} from "formik";
 export default function InputSelect({label, options, ...props}) {
   const [field, meta] = useField(props);
   return (
-    <div class="select-style-1">
+    <div className="select-style-1">
       <label>{label}</label>
-      <div class="select-position">
+      <div className="select-position">
         <select
           className={
             'form-control ' +
