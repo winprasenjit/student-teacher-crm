@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import Login from './modules/authentication/Login';
 import Registration from './modules/authentication/Registration';
 import Home from './modules/dashboard/Home';
-import GuradedRoute from './modules/_shared/guards/GuradedRoute';
+import GuardedRoute from "./modules/_shared/guards/GuardedRoute";
 import Header from './modules/_shared/components/Header';
 import Subjects from './modules/subject/Subjects';
 import Loader from './modules/_shared/components/Loader';
@@ -15,25 +15,27 @@ import Students from "./modules/student/Students";
 import ClassRoom from "./modules/classroom/ClassRoom";
 import Batches from "./modules/batch/Batches";
 import Academics from "./modules/academic/Academics";
+import Routine from "./modules/classroom/Routine";
 
 function App() {
   const { loader } = useSelector((state) => state.applicationStateReducer);
 
-  const gurdedRoute = (component) => {
-    return <GuradedRoute>{component}</GuradedRoute>;
+  const guardedRoute = (component) => {
+    return <GuardedRoute>{component}</GuardedRoute>;
   };
 
   return (
     <div className='App'>
       <div className='outlet-section'>
         <Routes>
-          <Route path='/' element={gurdedRoute(<Header />)}>
+          <Route path='/' element={guardedRoute(<Header />)}>
             <Route index element={<Home />} />
             <Route path='/subjects' element={<Subjects />} />
             <Route path='/academics' element={<Academics />} />
             <Route path='/teachers' element={<Teachers />} />
             <Route path='/students' element={<Students />} />
             <Route path='/batches' element={<Batches />} />
+            <Route path='/routine' element={<Routine />} />
             <Route path='/classroom' element={<ClassRoom />} />
           </Route>
           <Route path='/registration' element={<Registration />} />
