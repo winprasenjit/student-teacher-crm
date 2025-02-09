@@ -10,8 +10,8 @@ export default function ClassRoom({view}) {
   const events = [
     {
       title: "Example Event",
-      start: "2024-11-17T11:15:30.762Z",
-      end: "2024-11-17T11:50:15.762Z",
+      start: "2025-02-09T11:15:30.762Z",
+      end: "2025-02-09T11:50:15.762Z",
     },
   ];
   const [config, setConfig] = useState();

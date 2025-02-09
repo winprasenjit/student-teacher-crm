@@ -1,7 +1,7 @@
 import actions from '../actions/subjectActions';
 
 const initalState = {
-  subjects: null,
+  subjects: [],
   subject: null,
   errorMessage: null,
 };

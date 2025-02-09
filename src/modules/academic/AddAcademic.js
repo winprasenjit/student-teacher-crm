@@ -1,23 +1,21 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import action from './redux/actions/batchActions';
+import action from './redux/actions/academicActions';
 import actionCreator from '../_shared/helpers/actionCreator';
-import BatchForm from "./BatchForm";
+import AcademicForm from "./AcdemicForm";
 
-export default function AddBatch({ closeModal }) {
+export default function AddAcademic({ closeModal }) {
   const dispatch = useDispatch();
   const initialValues = {
     name: '',
-    className: '',
     description: '',
-    students: '',
   };
 
-  const save = (batch) =>
-    dispatch(actionCreator(action.ADD_BATCH, batch));
+  const save = (academic) =>
+    dispatch(actionCreator(action.ADD_ACADEMIC, academic));
 
   return (
-    <BatchForm
+    <AcademicForm
       initialValues={initialValues}
       onSave={save}
       onClose={closeModal}

@@ -91,7 +91,7 @@ export default function Login() {
                   </div>
 
                   <div className="mb-4 form-check">
-                    <InputCheckbox name="rememberMe">Rememebr me</InputCheckbox>
+                    <InputCheckbox name="rememberMe">Remember me</InputCheckbox>
                     <label
                       className="form-check-label float-end"
                       htmlFor="exampleCheck1"

@@ -84,6 +84,17 @@ tfoot th {
   background: transparent;
 }
 
+.base-list-box {
+  border: 1px solid #DFE5EF;
+  border-radius: 7px;
+  padding: 10px 10px;
+}
+
+.base-list-box ul{
+    max-height: 150px;
+    overflow-y: auto;
+}
+
 @media (hover: hover) {
   .resizer {
     opacity: 0;

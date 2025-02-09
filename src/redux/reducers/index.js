@@ -5,6 +5,7 @@ import subjectReducer from "../../modules/subject/redux/reducers/subjectReducer"
 import teacherReducer from '../../modules/teacher/redux/reducers/teacherReducer';
 import studentReducer from "../../modules/student/redux/reducers/studentReducer";
 import batchReducer from "../../modules/batch/redux/reducers/batchReducer";
+import academicReducer from "../../modules/academic/redux/reducers/academicReducer";
 
 const rootReducer = combineReducers({
   applicationStateReducer,
@@ -13,5 +14,6 @@ const rootReducer = combineReducers({
   teacherReducer,
   studentReducer,
   batchReducer,
+  academicReducer,
 })
 export default rootReducer;

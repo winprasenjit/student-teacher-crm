@@ -3,5 +3,6 @@
   <component name="SqlDialectMappings">
     <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/dc33edf5-7d8e-44ae-8e5c-98cc395870c6/console.js" dialect="MongoDB" />
     <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/dc33edf5-7d8e-44ae-8e5c-98cc395870c6/console_1.js" dialect="MongoDB" />
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/dc33edf5-7d8e-44ae-8e5c-98cc395870c6/console_2.js" dialect="MongoDB" />
   </component>
 </project>

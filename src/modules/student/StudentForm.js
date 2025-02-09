@@ -1,19 +1,43 @@
-import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {Formik, Form} from 'formik';
 import * as Yup from 'yup';
 import InputText from '../_shared/components/InputText';
 import InputTextArea from '../_shared/components/InputTextArea';
 import InputRadio from '../_shared/components/InputRadio';
+import InputSelect from "../_shared/components/InputSelect";
+import actionCreator from "../_shared/helpers/actionCreator";
+import action from "../academic/redux/actions/academicActions";
+
+const fetchData = (dispatch) => {
+  dispatch(actionCreator(action.LOAD_ALL_ACADEMICS));
+};
 
 export default function StudentForm({initialValues, onSave, onClose}) {
   const dispatch = useDispatch();
-
+  const { academics } = useSelector((state) => state.academicReducer);
+  const [classEducation, setClassEducation] = useState([]);
   const [hasError, setError] = useState(false);
 
   const handleOnChange = (event) => {
     setError(false);
   };
+
+  useEffect(() => {
+    fetchData(dispatch);
+  }, []);
+
+  useEffect(() => {
+    const academicList = academics.map((item) => ({
+      ...
+        item,
+      ...
+        {
+          id: item._id
+        }
+    }));
+    setClassEducation(academicList);
+  }, [academics]);
 
   return (
     <Formik
@@ -39,6 +63,7 @@ export default function StudentForm({initialValues, onSave, onClose}) {
           .required('Required'),
         email: Yup.string().email().required('Required'),
         sex: Yup.string().required('Required'),
+        qualification: Yup.string().required('Required'),
         aboutu: Yup.string().max(200, 'Must be 200 characters or less'),
       })}
       onSubmit={(teacher, {setSubmitting}) => {
@@ -113,6 +138,7 @@ export default function StudentForm({initialValues, onSave, onClose}) {
                 placeholder=""
               />
             </div>
+            <InputSelect name={"qualification"} label="Qualification" options={classEducation} ></InputSelect>
             <div className="">
               <InputRadio id="male" name="sex" value="M" placeholder="">
                 Male
