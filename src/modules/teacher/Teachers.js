@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
 import TitleWrapper from '../_shared/components/TitleWrapper';
 import BootstrapModal from '../_shared/components/BootstrapModal';
@@ -17,6 +18,7 @@ const toggleModal = (fn, setConfig, open) => {
 };
 
 export default function Teachers() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [config, setConfig] = useState();
   const [editConfig, setEditConfig] = useState();
@@ -43,11 +45,13 @@ export default function Teachers() {
     toggleModal(setEditKey, setEditConfig, true);
   };
 
-  const onDelete = (teacher) =>
-    dispatch(actionCreator(action.DELETE_TEACHER, teacher));
+  const onView = (teacher) => {
+    navigate('/view-teacher', {state: {teacher}});
+  };
 
-  return (
-    <>
+  const onDelete = (teacher) => dispatch(actionCreator(action.DELETE_TEACHER, teacher));
+
+  return (<>
       <BootstrapModal config={config} type="add">
         <AddTeacher closeModal={() => onCloseModal(setAddKey)} key={addKey}/>
       </BootstrapModal>
@@ -72,12 +76,11 @@ export default function Teachers() {
               <ReactTable
                 columns={columns}
                 rows={teachers}
-                actionColumn={{edit: onEdit, delete: onDelete}}
+                actionColumn={{edit: onEdit, view: onView, delete: onDelete}}
               />
             </div>
           </div>
         </div>
       </div>
-    </>
-  );
+    </>);
 }

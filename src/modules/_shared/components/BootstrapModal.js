@@ -33,7 +33,7 @@ export default function BootstrapModal({ config, children, type }) {
         tabIndex="-1"
       >
         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div className="modal-content">{children}</div>
+          <div className="modal-content overflow-auto">{children}</div>
         </div>
       </div>
     </>

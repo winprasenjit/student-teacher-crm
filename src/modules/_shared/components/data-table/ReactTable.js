@@ -101,9 +101,11 @@ export default function ReactTable({
         cell: (info) => {
           return (
             <div className="actionColumn">
-              <i onClick={() => onActionItemClick(info, actionColumn.edit)} className="lni lni-pencil"></i>
+              <i onClick={() => onActionItemClick(info, actionColumn?.edit)} className="lni lni-pencil"></i>
               &nbsp;
-              <i onClick={() => onActionItemClick(info, actionColumn.delete)} className="lni lni-trash-can"></i>
+              <i onClick={() => onActionItemClick(info, actionColumn?.view)} className="lni lni-eye"></i>
+              &nbsp;
+              <i onClick={() => onActionItemClick(info, actionColumn?.delete)} className="lni lni-trash-can"></i>
             </div>
           );
         },
