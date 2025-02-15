@@ -16,6 +16,7 @@ import ClassRoom from "./modules/classroom/ClassRoom";
 import Batches from "./modules/batch/Batches";
 import Academics from "./modules/academic/Academics";
 import Routine from "./modules/classroom/Routine";
+import ViewTeacher from "./modules/teacher/ViewTeacher";
 
 function App() {
   const { loader } = useSelector((state) => state.applicationStateReducer);
@@ -33,6 +34,7 @@ function App() {
             <Route path='/subjects' element={<Subjects />} />
             <Route path='/academics' element={<Academics />} />
             <Route path='/teachers' element={<Teachers />} />
+            <Route path='/view-teacher' element={<ViewTeacher />} />
             <Route path='/students' element={<Students />} />
             <Route path='/batches' element={<Batches />} />
             <Route path='/routine' element={<Routine />} />

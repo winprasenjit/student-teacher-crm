@@ -1,5 +1,6 @@
 [
   { "label": "Name", "dataField": "name", "size": 500 },
   { "label": "Email", "dataField": "email" , "size": 500},
-  { "label": "Mobile", "dataField": "mobile" , "size": 500}
+  { "label": "Mobile", "dataField": "mobile" , "size": 500},
+  { "label": "Qualification", "dataField": "qualification.name" , "size": 500}
 ]
