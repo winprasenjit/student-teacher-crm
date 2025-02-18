@@ -17,6 +17,7 @@ import Batches from "./modules/batch/Batches";
 import Academics from "./modules/academic/Academics";
 import Routine from "./modules/classroom/Routine";
 import ViewTeacher from "./modules/teacher/ViewTeacher";
+import Classes from './modules/classes/Classes';
 
 function App() {
   const { loader } = useSelector((state) => state.applicationStateReducer);
@@ -38,6 +39,7 @@ function App() {
             <Route path='/students' element={<Students />} />
             <Route path='/batches' element={<Batches />} />
             <Route path='/routine' element={<Routine />} />
+            <Route path='/classes' element={<Classes />} />
             <Route path='/classroom' element={<ClassRoom />} />
           </Route>
           <Route path='/registration' element={<Registration />} />
