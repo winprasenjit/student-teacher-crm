@@ -6,6 +6,7 @@ const apiEndPoint = {
     STUDENTS: '/students',
     BATCHES: '/batches',
     ACADEMICS: '/academics',
+    CLASSES: '/classes',
 };
 
 export default apiEndPoint;

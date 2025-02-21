@@ -1,11 +1,11 @@
 import actions from '../actions/batchActions';
 
-const initalState = {
+const initialState = {
   batches: [],
   batch: null,
   errorMessage: null,
 };
-export default function batchReducer(state = initalState, action) {
+export default function batchReducer(state = initialState, action) {
   switch (action.type) {
     case actions.GET_ALL_BATCHES:
       return {

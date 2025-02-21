@@ -96,6 +96,13 @@ export default function SideBar() {
               </NavLink>
             </li>
             <li className='nav-item'>
+              <NavLink to='/classes'>
+                <img className="me-3" src='images/menu/task-management-svgrepo-com.svg' alt='logo'
+                     width="20" height="20"/>
+                <span className='text'>Classes </span>
+              </NavLink>
+            </li>
+            <li className='nav-item'>
               <NavLink to='/routine'>
                 <img className="me-3" src='images/menu/task-management-svgrepo-com.svg' alt='logo'
                      width="20" height="20"/>
