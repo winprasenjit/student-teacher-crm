@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+tbody {
+  border-bottom: 1px solid lightgray;
+}
+
+th {
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  padding: 2px 4px;
+}
+
+tfoot {
+  color: gray;
+}
+
+tfoot th {
+  font-weight: normal;
+}
+
+.pagination-container {
+  border-top: 1px solid #efefef;
+}
+
+.total-page-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-grow: 50;
+}
+
+.select-section {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .go-to-page-input {
+    width: 60px;
+  }
+}
+
+.select-section .form-select {
+  max-width: 60px;
+}
+
+.navigate-section {
+  display: flex;
+}
+
+.border.rounded.p-1 {
+  margin: 0 0.25rem;
+}
+
+.resizer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: col-resize;
+  user-select: none;
+  touch-action: none;
+}
+
+.resizer.isResizing {
+  background: blue;
+  opacity: 1;
+}
+
+.cursor-pointer.select-none {
+  border: none;
+  background: transparent;
+}
+
+.base-list-box {
+  border: 1px solid #DFE5EF;
+  border-radius: 7px;
+  padding: 10px 10px;
+}
+
+.base-list-box ul {
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+@media (hover: hover) {
+  .resizer {
+    opacity: 0;
+  }
+
+  *:hover > .resizer {
+    opacity: 1;
+  }
+}
