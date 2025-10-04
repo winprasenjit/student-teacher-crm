@@ -9,7 +9,6 @@ export function* fetchAllClasses(action) {
   processRequestStatus(true);
   try {
     let classes = yield call(httpService.get, { url: apiEndPoint.CLASSES });
-    console.log("classes",classes);
     yield put(actionCreator(actions.GET_ALL_CLASSES, classes));
     processRequestStatus(false);
   } catch (error) {
@@ -54,7 +53,6 @@ export function* addClass(action) {
 }
 
 export function* editClass(action) {
-  console.log('action >>>>>',action);
   processRequestStatus(true);
   try {
     yield call(httpService.put, {

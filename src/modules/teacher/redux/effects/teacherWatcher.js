@@ -41,6 +41,7 @@ export function* addTeacher(action) {
     yield call(httpService.post, {
       url: apiEndPoint.TEACHERS,
       data: action.data,
+      headers: { "Content-Type": "multipart/form-data" },
     });
     yield put(actionCreator(actions.LOAD_ALL_TEACHERS));
     processRequestStatus(false);
@@ -58,6 +59,7 @@ export function* editTeacher(action) {
     yield call(httpService.put, {
       url: apiEndPoint.TEACHERS,
       data: action.data,
+      headers: { "Content-Type": "multipart/form-data" },
     });
     yield put(actionCreator(actions.LOAD_ALL_TEACHERS));
     processRequestStatus(false);
