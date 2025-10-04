@@ -6,5 +6,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="student-taecher-crm-api" />
+    <orderEntry type="module" module-name="vehicle-selection" />
   </component>
 </module>

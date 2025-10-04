@@ -12,7 +12,6 @@ const fetchData = (dispatch) => {
 };
 
 export default function ClassForm({ initialValues, onSave, onClose }) {
-  console.log("sukanta", initialValues);
   const dispatch = useDispatch();
 
   const [hasError, setError] = useState(false);

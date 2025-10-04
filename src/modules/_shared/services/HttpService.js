@@ -6,13 +6,15 @@ const httpService = {
       credentials: true,
     });
   },
-  post: ({ url, data }) => {
+  post: ({ url, data, ...options }) => {
     return axios.post(url, data, {
+      ...options,
       credentials: "include",
     });
   },
-  put: ({ url, data }) => {
+  put: ({ url, data, ...options }) => {
     return axios.put(url, data, {
+      ...options,
       credentials: "include",
     });
   },

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../../Node/student-taecher-crm-api/.idea/student-taecher-crm-api.iml" filepath="$PROJECT_DIR$/../../Node/student-taecher-crm-api/.idea/student-taecher-crm-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/student-teacher-crm.iml" filepath="$PROJECT_DIR$/.idea/student-teacher-crm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../vehicle-selection/.idea/vehicle-selection.iml" filepath="$PROJECT_DIR$/../vehicle-selection/.idea/vehicle-selection.iml" />
     </modules>
   </component>
 </project>

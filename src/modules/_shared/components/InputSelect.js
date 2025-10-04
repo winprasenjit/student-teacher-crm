@@ -20,7 +20,7 @@ export default function InputSelect({label, options, ...props}) {
           {...props}>
           <option value="">Select {label}</option>
           {(options || []).map((option) => (
-            <option key={option.id} value={option.value|| option._id}>{option.name}</option>
+            <option key={option?.id} value={option?.value|| option?._id}>{option?.name}</option>
           ))}
         </select>
         {meta.touched && meta.error ? (

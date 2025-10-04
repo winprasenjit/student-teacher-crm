@@ -96,6 +96,16 @@ tfoot th {
   overflow-y: auto;
 }
 
+.lni-circle-plus:hover {
+  color: #365CF5 !important;
+  cursor: pointer;
+}
+
+.lni-trash-can:hover {
+  color: #d50100 !important;
+  cursor: pointer;
+}
+
 @media (hover: hover) {
   .resizer {
     opacity: 0;
